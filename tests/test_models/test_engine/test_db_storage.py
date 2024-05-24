@@ -99,7 +99,7 @@ class TestDatabaseStorage(unittest.TestCase):
         retrieved_object = self.storage.get(MyClass, 1)
         self.assertEqual(retrieved_object, self.my_class_instance)
 
-    def test_count(self):
+    def test_count_all(self):
         """Test the count method."""
         self.storage.save(self.my_class_instance)
         count = self.storage.count(MyClass)

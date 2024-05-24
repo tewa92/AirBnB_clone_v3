@@ -40,8 +40,8 @@ class DBStorage:
         if HBNB_ENV == "test":
             Base.metadata.drop_all(self.__engine)
 
-def test_state_all(self):
-        """... checks if all() function returns newly created instance"""
+    def test_state_all(self):
+        """Tests if all() returns newly created instance"""
         all_objs = storage.all()
         all_state_objs = storage.all('State')
 
