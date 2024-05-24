@@ -40,6 +40,23 @@ class DBStorage:
         if HBNB_ENV == "test":
             Base.metadata.drop_all(self.__engine)
 
+def test_state_all(self):
+        """... checks if all() function returns newly created instance"""
+        all_objs = storage.all()
+        all_state_objs = storage.all('State')
+
+        exist_in_all = False
+        for k in all_objs.keys():
+            if self.state.id in k:
+                exist_in_all = True
+        exist_in_all_states = False
+        for k in all_state_objs.keys():
+            if self.state.id in k:
+                exist_in_all_states = True
+
+        self.assertTrue(exist_in_all)
+        self.assertTrue(exist_in_all_states)
+
     def all(self, cls=None):
         """query on the current database session"""
         new_dict = {}
@@ -76,7 +93,7 @@ class DBStorage:
             return len(self.all())
         return len(self.all(cls))
 
-    save(self):
+    def save(self):
         """commit all changes of the current database session"""
         self.__session.commit()
 
