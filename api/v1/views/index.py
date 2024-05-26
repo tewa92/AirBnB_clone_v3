@@ -1,8 +1,14 @@
-# api/v1/views/index.py
-from flask import jsonify
-from . import app_views
+#!/usr/bin/python3
+"""
+This module defines the index view for the API.
+"""
 
+from api.v1.views import app_views
+from flask import jsonify
 
 @app_views.route('/status', methods=['GET'])
-def get_status():
+def status():
+    """
+    Returns the status of the API.
+    """
     return jsonify({"status": "OK"})
