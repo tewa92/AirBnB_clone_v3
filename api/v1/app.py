@@ -1,45 +1,40 @@
 #!/usr/bin/python3
 """
-app
+Flask application setup
 """
 
 from flask import Flask, jsonify
 from flask_cors import CORS
 from os import getenv
-
 from api.v1.views import app_views
 from models import storage
 
-
 app = Flask(__name__)
 
+# Enable CORS for all routes and allow requests from any origin
 CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
+# Register the blueprint for API routes
 app.register_blueprint(app_views)
 
 
 @app.teardown_appcontext
-def teardown(exception):
+def close_storage(exception):
     """
-    teardown function
+    Closes the storage on teardown
     """
     storage.close()
 
 
 @app.errorhandler(404)
-def handle_404(exception):
+def not_found_error(exception):
     """
-    handles 404 error
-    :return: returns 404 json
+    Handle 404 errors with a custom JSON response
+    :return: JSON response with error message and 404 status code
     """
-    data = {
-        "error": "Not found"
-    }
+    return jsonify({"error": "Not found"}), 404
 
-    resp = jsonify(data)
-    resp.status_code = 404
-
-    return(resp)
 
 if __name__ == "__main__":
-    app.run(getenv("HBNB_API_HOST"), getenv("HBNB_API_PORT"))
+    # Run the Flask application with host and port from environment variables
+    app.run(host=getenv("HBNB_API_HOST", "0.0.0.0"), port=int(getenv("HBNB_API_PORT", 5000)))
