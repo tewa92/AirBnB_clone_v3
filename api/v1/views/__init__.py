@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-"""
-This module sets up the Blueprint for the API views.
-"""
-
 from flask import Blueprint
 
 app_views = Blueprint('app_views', __name__, url_prefix='/api/v1')
