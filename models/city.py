@@ -22,3 +22,16 @@ class City(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes city"""
         super().__init__(*args, **kwargs)
+
+    def to_dict(self):
+        """
+        Convert instance to dictionary format.
+        """
+        city_dict = {
+            "id": self.id,
+            "name": self.name,
+            "state_id": self.state_id,
+            "created_at": self.created_at.isoformat(),
+            "updated_at": self.updated_at.isoformat()
+        }
+        return city_dict

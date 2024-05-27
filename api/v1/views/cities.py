@@ -4,7 +4,8 @@ Routes for handling City objects and operations.
 """
 
 from flask import jsonify, abort, request
-from api.v1.views import app_views, storage
+from api.v1.views import app_views
+from models import storage
 from models.city import City
 
 
@@ -18,7 +19,7 @@ def get_cities_by_state(state_id):
     if not state:
         abort(404)
 
-    city_list = [city.to_json() for city in state.cities]
+    city_list = [city.to_dict() for city in state.cities]
     return jsonify(city_list)
 
 
@@ -43,7 +44,7 @@ def create_city(state_id):
 
     new_city = City(**city_json)
     new_city.save()
-    return jsonify(new_city.to_json()), 201
+    return jsonify(new_city.to_dict()), 201
 
 
 @app_views.route("/cities/<city_id>", methods=["GET"], strict_slashes=False)
@@ -54,7 +55,7 @@ def get_city_by_id(city_id):
     city = storage.get("City", city_id)
     if not city:
         abort(404)
-    return jsonify(city.to_json())
+    return jsonify(city.to_dict())
 
 
 @app_views.route("/cities/<city_id>", methods=["PUT"], strict_slashes=False)
@@ -75,7 +76,7 @@ def update_city(city_id):
             setattr(city, key, value)
 
     city.save()
-    return jsonify(city.to_json())
+    return jsonify(city.to_dict())
 
 
 @app_views.route("/cities/<city_id>", methods=["DELETE"], strict_slashes=False)
