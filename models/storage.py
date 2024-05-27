@@ -1,5 +1,26 @@
 #!/usr/bin/python3
+"""
+This module defines the Storage class for managing the saving, retrieval,
+and deletion of various objects within a storage system.
+
+The Storage class provides methods to interact with stored objects,
+including saving new objects, retrieving existing ones by various criteria,
+and deleting objects.
+"""
+
+
 class Storage:
+    """
+    Storage class for managing the saving, retrieval, and deletion of objects.
+
+    This class provides methods to interact with stored objects, including
+    saving new objects, retrieving existing ones by various criteria, and
+    deleting objects.
+
+    Attributes:
+        data (dict): A dictionary to store objects with their unique identifiers.
+    """
+
     def __init__(self):
         """
         Initialize the Storage object with a dictionary of empty lists for

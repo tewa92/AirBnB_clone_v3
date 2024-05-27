@@ -89,7 +89,21 @@ class TestFileStorage(unittest.TestCase):
 
 
 class TestDatabaseStorage(unittest.TestCase):
+    """Test the database storage"""
     def setUp(self):
+        """
+        Set up the test environment for the TestState class.
+
+        This method is called before each test in this class. It initializes
+        the storage and creates an instance of the State class for testing
+        purposes.
+
+        Attributes:
+            storage (FileStorage): An instance of the FileStorage class for
+            managing data storage during tests.
+            my_class_instance (State): An instance of the State class
+            initialized with an ID of 1 and a name of "test" for testing.
+        """
         self.storage = db_storage()
         self.my_class_instance = State(1, "test")
 
