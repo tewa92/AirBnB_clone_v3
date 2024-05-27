@@ -8,7 +8,8 @@ from api.v1.views import app_views, storage
 from models.city import City
 
 
-@app_views.route("/states/<state_id>/cities", methods=["GET"], strict_slashes=False)
+@app_views.route("/states/<state_id>/cities", methods=["GET"],
+                 strict_slashes=False)
 def get_cities_by_state(state_id):
     """
     Retrieves all City objects from a specific state.
@@ -21,7 +22,8 @@ def get_cities_by_state(state_id):
     return jsonify(city_list)
 
 
-@app_views.route("/states/<state_id>/cities", methods=["POST"], strict_slashes=False)
+@app_views.route("/states/<state_id>/cities", methods=["POST"],
+                 strict_slashes=False)
 def create_city(state_id):
     """
     Creates a new City object.

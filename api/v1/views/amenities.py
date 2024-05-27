@@ -13,7 +13,8 @@ def get_all_amenities():
     """
     Retrieves all Amenity objects.
     """
-    amenity_list = [amenity.to_json() for amenity in storage.all("Amenity").values()]
+    amenity_list = [amenity.to_json()
+                    for amenity in storage.all("Amenity").values()]
     return jsonify(amenity_list)
 
 
@@ -34,7 +35,8 @@ def create_amenity():
     return jsonify(new_amenity.to_json()), 201
 
 
-@app_views.route("/amenities/<amenity_id>", methods=["GET"], strict_slashes=False)
+@app_views.route("/amenities/<amenity_id>", methods=["GET"],
+                 strict_slashes=False)
 def get_amenity_by_id(amenity_id):
     """
     Retrieves a specific Amenity object by ID.
@@ -45,7 +47,8 @@ def get_amenity_by_id(amenity_id):
     return jsonify(amenity.to_json())
 
 
-@app_views.route("/amenities/<amenity_id>", methods=["PUT"], strict_slashes=False)
+@app_views.route("/amenities/<amenity_id>", methods=["PUT"],
+                 strict_slashes=False)
 def update_amenity(amenity_id):
     """
     Updates a specific Amenity object by ID.
@@ -66,7 +69,8 @@ def update_amenity(amenity_id):
     return jsonify(amenity.to_json())
 
 
-@app_views.route("/amenities/<amenity_id>", methods=["DELETE"], strict_slashes=False)
+@app_views.route("/amenities/<amenity_id>", methods=["DELETE"],
+                 strict_slashes=False)
 def delete_amenity(amenity_id):
     """
     Deletes a Amenity object by ID.
