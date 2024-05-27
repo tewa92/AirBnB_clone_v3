@@ -3,7 +3,7 @@
 Contains class BaseModel
 """
 from hashlib import md5
-from sqlalchemy import Column
+from sqlalchemy import Column, String, Integer, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 import models

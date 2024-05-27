@@ -29,7 +29,9 @@ def handle_404(exception):
     """
     Custom error handler for 404 Not Found errors.
     """
-    data = {"error": "Not found"}
+    data = {
+        "error": "Not found"
+    }
     return jsonify(data), 404
 
 
