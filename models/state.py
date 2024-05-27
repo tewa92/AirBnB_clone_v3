@@ -32,3 +32,18 @@ class State(BaseModel, Base):
                 if city.state_id == self.id:
                     city_list.append(city)
             return city_list
+    def to_dict(self):
+        """
+        Converts the State object to a dictionary.
+
+        Returns:
+            dict: A dictionary representation of the State object.
+        """
+        state_dict = {
+            'id': self.id,
+            'name': self.name,
+            'created_at': self.created_at.isoformat(),
+            'updated_at': self.updated_at.isoformat(),
+            # Include other relevant fields here
+        }
+        return state_dict
